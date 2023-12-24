@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <link rel="stylesheet" href="../../static/plugins/bootstrap-3.4.1/css/bootstrap.css">
+</head>
+<body>
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://127.0.0.1:8000/homepage/"><strong>盲盒首页</strong></a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <span class="nav navbar-nav ">
+        <span class="navbar-brand" style="padding-left: 50px;padding-right: 80px"><a href="http://127.0.0.1:8000/homepage/add/" style="text-decoration: none;">放置盲盒</a></span>
+        <span class="navbar-brand" style="padding-right: 80px"><a href="http://127.0.0.1:8000/boy/" style="text-decoration: none;">男生盲盒</a></span>
+        <span class="navbar-brand" style="padding-right: 80px"><a href="http://127.0.0.1:8000/girl/" style="text-decoration: none;">女生盲盒</a></span>
+            {% for obj in query%}
+        <span class="navbar-brand" style="padding-right: 80px"><a href="http://127.0.0.1:8000/random/comment/{{ obj.id }}" style="text-decoration: none;">随机盲盒</a></span>
+          {% endfor %}
+      </span>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ request.session.info.name }}<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+        <li><a href="http://127.0.0.1:8000/profile/">个人资料</a></li>
+            <li><a href="http://127.0.0.1:8000/user/history/">盲盒记录</a></li>
+            <li><a href="#">修改密码</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="http://127.0.0.1:8000/logout/">注销</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>昵称</th>
+            <th>性别</th>
+            <th>住址</th>
+            <th>更多</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for obj in queryset %}
+          <tr>
+            <td>{{ obj.name }}</td>
+            <td>{{ obj.get_gender_display }}</td>
+            <td>{{ obj.home }}</td>
+            <td>
+                <a class="btn btn-primary btn-xs" href="http://127.0.0.1:8000/girl/comment/{{ obj.id }}">详细</a>
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+</div>
+<script src="../../static/plugins/bootstrap-3.4.1/js/jquery.js"></script>
+<script src="../../static/plugins/bootstrap-3.4.1/js/bootstrap.js"></script>
+</body>
+</html>

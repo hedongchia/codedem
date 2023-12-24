@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .account{
+            width: 600px;
+            border: 1px solid #dddddd;
+            height: 500px;
+            margin: auto;
+            margin-top:150px ;
+            padding:30px 40px;
+            box-shadow: 5px 5px 20px #aaa;
+        }
+    </style>
+     <link rel="stylesheet" href="../../static/plugins/bootstrap-3.4.1/css/bootstrap.css">
+</head>
+<body>
+<div class="account">
+<div style=" text-align: center;"><h2>个人信息</h2></div>
+    <h2>
+       <label >用户名</label>
+       {{ request.session.info.name}}
+    </h2>
+
+  </div>
+</div>
+</body>
+</html>
